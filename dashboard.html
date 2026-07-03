@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dashboard — AKF Member Portal</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0D0A06;--navy2:#141008;--saffron:#FF9A00;--gold:#F0C040;--green:#3A8C60;--white:#F9F3E8;--muted:#9A8A74;--glass:rgba(249,243,232,0.04);--border:rgba(249,243,232,0.08);--radius:14px}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh}
+a{text-decoration:none;color:inherit}
+/* Layout */
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+/* Sidebar */
+.sidebar{background:var(--navy2);border-right:1px solid var(--border);padding:28px 20px;display:flex;flex-direction:column;gap:8px;position:sticky;top:0;height:100vh}
+.sidebar-logo{display:flex;align-items:center;gap:10px;padding:0 8px 24px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.sidebar-logo img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.sidebar-logo-text span{display:block;font-weight:700;font-size:.9rem}
+.sidebar-logo-text small{color:var(--muted);font-size:.72rem}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;color:rgba(255,255,255,.7);cursor:pointer;transition:all .2s;font-size:.88rem;border:none;background:none;width:100%;text-align:left}
+.nav-item:hover,.nav-item.active{background:rgba(255,153,51,.1);color:var(--saffron)}
+.nav-item .icon{font-size:1.1rem;width:20px;text-align:center}
+.nav-divider{height:1px;background:var(--border);margin:8px 0}
+.nav-label{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:4px 14px}
+.sidebar-bottom{margin-top:auto}
+/* Main */
+.main{padding:36px 40px;overflow-y:auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px}
+.topbar h1{font-family:'Playfair Display',serif;font-size:1.6rem;background:linear-gradient(135deg,var(--white),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.user-chip{display:flex;align-items:center;gap:8px;background:var(--glass);border:1px solid var(--border);border-radius:50px;padding:6px 14px;font-size:.82rem}
+.user-chip .dot{width:8px;height:8px;background:var(--green);border-radius:50%}
+.board-chip{background:rgba(212,175,55,.1);border-color:rgba(212,175,55,.3);color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:50px;font-weight:600;font-size:.85rem;cursor:pointer;border:none;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,var(--saffron),#e67e00);color:#fff}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--white);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--saffron);color:var(--saffron)}
+.btn-danger{background:rgba(220,53,69,.1);color:#ff6b7a;border:1px solid rgba(220,53,69,.2)}
+.btn-danger:hover{background:rgba(220,53,69,.2)}
+/* Cards */
+.glass-card{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stat-card{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius);padding:22px;text-align:center}
+.stat-card .num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--saffron);display:block}
+.stat-card .lbl{color:var(--muted);font-size:.8rem;margin-top:4px}
+/* Section headers */
+.section-title{font-size:1rem;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.section-title .tag{font-size:.68rem;padding:3px 10px;background:rgba(255,153,51,.1);color:var(--saffron);border-radius:50px;letter-spacing:1px;text-transform:uppercase}
+/* Announcements */
+.ann-card{background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:14px;position:relative}
+.ann-card .ann-title{font-weight:600;font-size:.95rem;margin-bottom:6px}
+.ann-card .ann-body{color:var(--muted);font-size:.85rem;line-height:1.6}
+.ann-card .ann-meta{font-size:.72rem;color:var(--muted);margin-top:10px}
+.ann-card .ann-del{position:absolute;top:14px;right:14px}
+/* Form */
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px;font-weight:500}
+.form-group input,.form-group textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--white);font-family:'Inter',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--saffron)}
+.form-group textarea{resize:vertical;min-height:100px}
+/* Fund editor */
+.fund-display{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--saffron);margin:12px 0}
+.fund-note{color:var(--muted);font-size:.8rem}
+/* Member table */
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px 14px;text-align:left;font-size:.85rem;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:1px}
+td{color:var(--white)}
+.role-badge{display:inline-block;padding:2px 10px;border-radius:50px;font-size:.7rem;font-weight:600}
+.badge-board{background:rgba(212,175,55,.15);color:var(--gold);border:1px solid rgba(212,175,55,.3)}
+.badge-member{background:rgba(255,153,51,.1);color:var(--saffron);border:1px solid rgba(255,153,51,.2)}
+/* Toast */
+.toast{position:fixed;bottom:28px;right:28px;background:#1a2a1a;border:1px solid var(--green);color:#4ade80;padding:12px 20px;border-radius:10px;font-size:.85rem;z-index:999;display:none;animation:slidein .3s ease}
+@keyframes slidein{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+/* Hidden sections */
+.tab-content{display:none}
+.tab-content.active{display:block}
+/* Board-only */
+.board-only{display:none}
+/* Responsive */
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.main{padding:24px 20px}.grid-2,.grid-3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="WhatsApp Image 2026-04-18 at 8.07.49 PM.jpeg" alt="AKF">
+      <div class="sidebar-logo-text">
+        <span>AKF Portal</span>
+        <small id="sidebar-role">Loading...</small>
+      </div>
+    </div>
+    <span class="nav-label">Main</span>
+    <button class="nav-item active" onclick="showTab('home')"><span class="icon">🏠</span> Dashboard</button>
+    <button class="nav-item" onclick="showTab('announcements')"><span class="icon">📢</span> Announcements</button>
+    <div class="nav-divider"></div>
+    <span class="nav-label board-only" id="board-nav-label">Board</span>
+    <button class="nav-item board-only" id="btn-post" onclick="showTab('post-ann')"><span class="icon">✏️</span> Post Announcement</button>
+    <button class="nav-item board-only" id="btn-fund" onclick="showTab('fund')"><span class="icon">💰</span> Edit Fund Amount</button>
+    <button class="nav-item board-only" id="btn-members" onclick="showTab('members')"><span class="icon">👥</span> Member Directory</button>
+    <div class="nav-divider"></div>
+    <div class="sidebar-bottom">
+      <a href="/" class="nav-item"><span class="icon">🌐</span> Main Website</a>
+      <button class="nav-item" onclick="logout()" style="color:#ff6b7a"><span class="icon">🚪</span> Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="topbar">
+      <h1 id="page-title">Dashboard</h1>
+      <div class="topbar-right">
+        <div class="user-chip" id="user-chip"><div class="dot"></div> <span id="chip-name">...</span></div>
+      </div>
+    </div>
+
+    <!-- HOME TAB -->
+    <div class="tab-content active" id="tab-home">
+      <div class="grid-3" style="margin-bottom:28px">
+        <div class="stat-card"><span class="num" id="stat-fund">₹0</span><div class="lbl">Fund Collected</div></div>
+        <div class="stat-card"><span class="num" id="stat-ann">0</span><div class="lbl">Announcements</div></div>
+        <div class="stat-card"><span class="num">4</span><div class="lbl">Active Programs</div></div>
+      </div>
+      <div class="glass-card">
+        <div class="section-title">Welcome to the Member Portal <span class="tag">AKF</span></div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.8">
+          Welcome, <strong id="welcome-name" style="color:var(--white)">Member</strong>! You are logged in as <strong id="welcome-role" style="color:var(--saffron)">...</strong>.<br>
+          Use the sidebar to navigate. Board members have additional controls for announcements and fund management.
+        </p>
+        <div style="margin-top:20px;padding:16px;background:rgba(255,153,51,.06);border-radius:10px;border-left:3px solid var(--saffron)">
+          <p style="font-size:.85rem;color:var(--muted)">📌 <strong style="color:var(--white)">Latest Announcement</strong></p>
+          <p id="latest-ann" style="font-size:.88rem;margin-top:6px;color:var(--muted)">No announcements yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANNOUNCEMENTS TAB -->
+    <div class="tab-content" id="tab-announcements">
+      <div class="section-title">All Announcements <span class="tag">Live</span></div>
+      <div id="ann-list"><p style="color:var(--muted)">Loading...</p></div>
+    </div>
+
+    <!-- POST ANNOUNCEMENT TAB (Board only) -->
+    <div class="tab-content" id="tab-post-ann">
+      <div class="glass-card" style="max-width:600px">
+        <div class="section-title">Post New Announcement <span class="tag">Board</span></div>
+        <p style="color:var(--muted);font-size:.83rem;margin-bottom:20px">This will be published on the homepage and emailed to ALL members.</p>
+        <div class="form-group">
+          <label>Announcement Title</label>
+          <input type="text" id="ann-title" placeholder="Enter a clear, concise title">
+        </div>
+        <div class="form-group">
+          <label>Content</label>
+          <textarea id="ann-content" placeholder="Write the full announcement here..."></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="postAnnouncement()">📢 Publish & Notify All Members</button>
+      </div>
+    </div>
+
+    <!-- FUND TAB (Board only) -->
+    <div class="tab-content" id="tab-fund">
+      <div class="glass-card" style="max-width:480px">
+        <div class="section-title">Fund Amount <span class="tag">Board</span></div>
+        <p style="color:var(--muted);font-size:.83rem">This number is displayed live on the Donate page. Updating it emails all members.</p>
+        <div class="fund-display" id="current-fund">₹0</div>
+        <div class="fund-note" id="fund-meta">Last updated: —</div>
+        <div class="form-group" style="margin-top:24px">
+          <label>New Amount (₹)</label>
+          <input type="number" id="fund-input" placeholder="e.g. 125000">
+        </div>
+        <button class="btn btn-primary" onclick="updateFund()">💰 Update & Notify All</button>
+      </div>
+    </div>
+
+    <!-- MEMBERS TAB (Board only) -->
+    <div class="tab-content" id="tab-members">
+      <div class="section-title">Member Directory <span class="tag">Board Only</span></div>
+      <div class="glass-card" style="padding:0;overflow:hidden">
+        <table id="members-table">
+          <thead><tr><th>Name</th><th>Role</th><th>Email</th><th>Level</th></tr></thead>
+          <tbody id="members-body"><tr><td colspan="4" style="color:var(--muted)">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let userInfo = {};
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+async function init() {
+  try {
+    const res = await fetch('/api/me');
+    if (!res.ok) { window.location.href = '/login'; return; }
+    userInfo = await res.json();
+
+    document.getElementById('chip-name').textContent  = userInfo.name;
+    document.getElementById('sidebar-role').textContent = userInfo.role;
+    document.getElementById('welcome-name').textContent = userInfo.name;
+    document.getElementById('welcome-role').textContent = userInfo.role;
+
+    if (userInfo.role_level === 'board') {
+      document.getElementById('user-chip').classList.add('board-chip');
+      document.querySelectorAll('.board-only').forEach(el => el.style.display = 'flex');
+      document.getElementById('board-nav-label').style.display = 'block';
+    }
+
+    loadFund();
+    loadAnnouncements();
+  } catch { window.location.href = '/login'; }
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
+function showTab(name) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  const titles = { home:'Dashboard', announcements:'Announcements', 'post-ann':'Post Announcement', fund:'Edit Fund Amount', members:'Member Directory' };
+  document.getElementById('page-title').textContent = titles[name] || 'Dashboard';
+  if (name === 'members' && userInfo.role_level === 'board') loadMembers();
+  if (name === 'fund') loadFund();
+  if (name === 'announcements') renderAnnList();
+}
+
+// ── Announcements ─────────────────────────────────────────────────────────────
+let announcements = [];
+async function loadAnnouncements() {
+  const res  = await fetch('/api/announcements');
+  announcements = await res.json();
+  document.getElementById('stat-ann').textContent = announcements.length;
+  document.getElementById('latest-ann').textContent =
+    announcements.length ? announcements[0].title : 'No announcements yet.';
+}
+
+function renderAnnList() {
+  const el = document.getElementById('ann-list');
+  if (!announcements.length) { el.innerHTML = '<p style="color:var(--muted)">No announcements yet.</p>'; return; }
+  el.innerHTML = announcements.map(a => `
+    <div class="ann-card">
+      <div class="ann-title">${a.title}</div>
+      <div class="ann-body">${a.content}</div>
+      <div class="ann-meta">Posted by ${a.posted_by} · ${a.posted_at}</div>
+      ${userInfo.role_level === 'board' ? `<button class="btn btn-danger ann-del" onclick="deleteAnn(${a.id})">🗑</button>` : ''}
+    </div>`).join('');
+}
+
+async function postAnnouncement() {
+  const title   = document.getElementById('ann-title').value.trim();
+  const content = document.getElementById('ann-content').value.trim();
+  if (!title || !content) { toast('Please fill in both fields.', true); return; }
+  const res = await fetch('/api/announcement', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({title, content})
+  });
+  const d = await res.json();
+  if (d.success) {
+    toast('✓ Announcement published and emailed to all members!');
+    document.getElementById('ann-title').value = '';
+    document.getElementById('ann-content').value = '';
+    await loadAnnouncements();
+  } else { toast(d.error || 'Error posting.', true); }
+}
+
+async function deleteAnn(id) {
+  if (!confirm('Remove this announcement?')) return;
+  await fetch('/api/announcement/'+id, {method:'DELETE'});
+  await loadAnnouncements();
+  renderAnnList();
+  toast('Announcement removed.');
+}
+
+// ── Fund ──────────────────────────────────────────────────────────────────────
+async function loadFund() {
+  const res  = await fetch('/api/fund');
+  const data = await res.json();
+  const fmt  = '₹' + Number(data.amount).toLocaleString('en-IN');
+  document.getElementById('stat-fund').textContent  = fmt;
+  document.getElementById('current-fund').textContent = fmt;
+  document.getElementById('fund-meta').textContent  =
+    `Last updated by ${data.updated_by} on ${data.updated_at}`;
+  document.getElementById('fund-input').value = data.amount;
+}
+
+async function updateFund() {
+  const amount = parseInt(document.getElementById('fund-input').value);
+  if (isNaN(amount) || amount < 0) { toast('Enter a valid amount.', true); return; }
+  const res = await fetch('/api/fund', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({amount})
+  });
+  const d = await res.json();
+  if (d.success) { toast('✓ Fund updated and all members notified!'); loadFund(); }
+  else toast(d.error || 'Error updating.', true);
+}
+
+// ── Members ──────────────────────────────────────────────────────────────────
+async function loadMembers() {
+  const res  = await fetch('/api/members');
+  const list = await res.json();
+  document.getElementById('members-body').innerHTML = list.map(m => `
+    <tr>
+      <td>${m.name}</td>
+      <td>${m.role}</td>
+      <td><a href="mailto:${m.email}" style="color:var(--saffron)">${m.email}</a></td>
+      <td><span class="role-badge ${m.role_level === 'board' ? 'badge-board' : 'badge-member'}">${m.role_level}</span></td>
+    </tr>`).join('');
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+function toast(msg, err=false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = err ? '#2a1a1a' : '#1a2a1a';
+  t.style.borderColor = err ? '#e74c3c' : '#2D6A4F';
+  t.style.color = err ? '#ff6b7a' : '#4ade80';
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 3500);
+}
+
+async function logout() {
+  await fetch('/logout');
+  window.location.href = '/';
+}
+
+init();
+</script>
+</body>
+</html>

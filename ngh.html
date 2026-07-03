@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Next Gen Hindustan — AI for Every Indian | Arun-Kumar Foundation</title>
+<meta name="description" content="Next Gen Hindustan is AKF's flagship AI training programme — taking complete beginners from zero to building Large Language Models in 11 months.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── NGH Page Styles ── */
+:root {
+  --ngh-blue: #4f8ef7;
+  --ngh-accent: #4f8ef7;
+  --ngh-glow: rgba(79,142,247,0.12);
+  /* NGH dark theme overrides */
+  --bg: #0D0A06;
+  --bg2: #141008;
+  --surface: #1C1610;
+  --cream: #F9F3E8;
+  --saffron: #FF9933;
+  --muted: #9A8A74;
+  --white: #FFFFFF;
+  --border: rgba(249,243,232,0.08);
+  --navy2: #0F1C35;
+}
+
+/* NAV NGH BADGE */
+.nav-ngh-badge {
+  background: linear-gradient(135deg, #4f8ef7, #6c5ce7) !important;
+  color: #fff !important;
+  padding: 7px 16px !important;
+  border-radius: 50px !important;
+  font-weight: 700 !important;
+  letter-spacing: .5px;
+}
+.nav-ngh-badge:hover { opacity: .88; transform: translateY(-1px); background: linear-gradient(135deg, #3a7cf5, #5a4fe0) !important; }
+
+/* ── NGH HERO ── */
+.ngh-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.ngh-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 100% 70% at 50% 0%, rgba(79,142,247,.18) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 85% 85%, rgba(255,154,0,.1) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 15% 75%, rgba(108,92,231,.1) 0%, transparent 55%),
+    #0D0A06;
+}
+.ngh-hero-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(249,243,232,.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+.ngh-hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--navy));
+}
+.ngh-hero-content { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+
+.ngh-presented-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 50px;
+  font-size: .78rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+.ngh-presented-by img {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.ngh-presented-by strong { color: var(--saffron); }
+
+.ngh-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  color: var(--white);
+}
+.ngh-title .ngh-grad {
+  background: linear-gradient(135deg, #4f8ef7, #c084fc, var(--saffron));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.ngh-tagline {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--muted);
+  margin-bottom: 12px;
+  letter-spacing: .5px;
+}
+.ngh-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 48px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.ngh-stats-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  margin-bottom: 48px;
+}
+.ngh-stat {
+  padding: 20px 32px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.ngh-stat:last-child { border-right: none; }
+.ngh-stat-num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--saffron);
+  line-height: 1;
+}
+.ngh-stat-lbl { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 6px; display: block; }
+
+.ngh-cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-ngh {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: .95rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all .3s ease;
+  background: linear-gradient(135deg, #4f8ef7, #6c5ce7);
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(79,142,247,.35);
+}
+.btn-ngh:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(79,142,247,.5); }
+
+/* ── NGH OVERVIEW ── */
+.ngh-overview { background: var(--navy2); padding: 100px 0; }
+.ngh-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.ngh-overview-text .mission-quote {
+  background: rgba(79,142,247,.08);
+  border-left: 4px solid #4f8ef7;
+  border-radius: 0 12px 12px 0;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  font-style: italic;
+  color: rgba(248,249,250,.8);
+  font-size: .95rem;
+  line-height: 1.8;
+}
+.ngh-overview-text .mission-quote cite {
+  display: block;
+  margin-top: 12px;
+  font-size: .78rem;
+  color: var(--saffron);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+.ngh-overview-text p { color: var(--muted); line-height: 1.9; margin-bottom: 16px; font-size: .93rem; }
+.ngh-overview-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--white), #a5c8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ngh-quick-facts { display: flex; flex-direction: column; gap: 14px; }
+.quick-fact {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  transition: border-color .2s;
+}
+.quick-fact:hover { border-color: rgba(79,142,247,.3); }
+.qf-icon {
+  width: 44px; height: 44px;
+  background: rgba(79,142,247,.12);
+  border: 1px solid rgba(79,142,247,.2);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.qf-text strong { display: block; font-size: .95rem; color: var(--white); font-weight: 600; }
+.qf-text span { font-size: .8rem; color: var(--muted); }
+
+/* ── PHASES ── */
+.ngh-phases { padding: 100px 0; background: var(--navy); }
+.phases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 0; }
+
+.phase-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+.phase-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+.phase-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.phase-1::before { background: linear-gradient(90deg, #4f8ef7, #06b6d4); }
+.phase-1:hover { border-color: rgba(79,142,247,.35); box-shadow: 0 20px 60px rgba(79,142,247,.12); }
+.phase-2::before { background: linear-gradient(90deg, #FF9933, #f59e0b); }
+.phase-2:hover { border-color: rgba(255,153,51,.35); box-shadow: 0 20px 60px rgba(255,153,51,.12); }
+.phase-3::before { background: linear-gradient(90deg, #a855f7, #ec4899); }
+.phase-3:hover { border-color: rgba(168,85,247,.35); box-shadow: 0 20px 60px rgba(168,85,247,.12); }
+.phase-4::before { background: linear-gradient(90deg, #10b981, #4f8ef7); }
+.phase-4:hover { border-color: rgba(16,185,129,.35); box-shadow: 0 20px 60px rgba(16,185,129,.12); }
+
+.phase-num {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.phase-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+.phase-duration {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .5px;
+  margin-bottom: 18px;
+}
+.phase-1 .phase-duration { background: rgba(79,142,247,.12); color: #4f8ef7; border: 1px solid rgba(79,142,247,.25); }
+.phase-2 .phase-duration { background: rgba(255,153,51,.12); color: var(--saffron); border: 1px solid rgba(255,153,51,.25); }
+.phase-3 .phase-duration { background: rgba(168,85,247,.12); color: #c084fc; border: 1px solid rgba(168,85,247,.25); }
+.phase-4 .phase-duration { background: rgba(16,185,129,.12); color: #34d399; border: 1px solid rgba(16,185,129,.25); }
+
+.phase-basis {
+  font-size: .75rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+  padding: 6px 10px;
+  background: rgba(255,255,255,.04);
+  border-radius: 6px;
+  display: inline-block;
+}
+.phase-basis strong { color: rgba(255,255,255,.6); }
+
+.phase-topics { list-style: none; margin-bottom: 22px; }
+.phase-topics li {
+  font-size: .83rem;
+  color: var(--muted);
+  padding: 6px 0 6px 18px;
+  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  line-height: 1.5;
+}
+.phase-topics li:last-child { border-bottom: none; }
+.phase-topics li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+.phase-1 .phase-topics li::before { color: #4f8ef7; }
+.phase-2 .phase-topics li::before { color: var(--saffron); }
+.phase-3 .phase-topics li::before { color: #c084fc; }
+.phase-4 .phase-topics li::before { color: #34d399; }
+
+.phase-capstone {
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+.phase-1 .phase-capstone { background: rgba(79,142,247,.07); border: 1px solid rgba(79,142,247,.15); color: rgba(248,249,250,.8); }
+.phase-2 .phase-capstone { background: rgba(255,153,51,.07); border: 1px solid rgba(255,153,51,.15); color: rgba(248,249,250,.8); }
+.phase-3 .phase-capstone { background: rgba(168,85,247,.07); border: 1px solid rgba(168,85,247,.15); color: rgba(248,249,250,.8); }
+.phase-4 .phase-capstone { background: rgba(16,185,129,.07); border: 1px solid rgba(16,185,129,.15); color: rgba(248,249,250,.8); }
+.phase-capstone strong { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; opacity: .7; }
+
+/* ── SCHEDULE ── */
+.ngh-schedule { background: var(--navy2); padding: 100px 0; }
+.schedule-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 0;
+}
+.schedule-table-wrap {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.sched-table { width: 100%; border-collapse: collapse; }
+.sched-table thead tr { background: rgba(79,142,247,.08); border-bottom: 1px solid rgba(79,142,247,.2); }
+.sched-table th { padding: 14px 18px; text-align: left; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #4f8ef7; }
+.sched-table tbody tr { border-bottom: 1px solid rgba(255,255,255,.05); transition: background .15s; }
+.sched-table tbody tr:last-child { border-bottom: none; }
+.sched-table tbody tr:hover { background: rgba(255,255,255,.03); }
+.sched-table td { padding: 13px 18px; font-size: .85rem; color: rgba(248,249,250,.85); vertical-align: top; }
+.sched-table td:first-child { font-weight: 600; color: var(--white); width: 40%; }
+.sched-table .highlight-row td { color: var(--saffron); }
+.sched-table .total-row { background: rgba(255,153,51,.06); }
+.sched-table .total-row td { color: var(--white); font-weight: 600; border-top: 1px solid rgba(255,153,51,.2); }
+
+.session-breakdown {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.sb-header {
+  padding: 18px 22px;
+  background: rgba(255,255,255,.03);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sb-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 22px;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.sb-row:last-child { border-bottom: none; }
+.sb-time {
+  font-size: .78rem;
+  font-weight: 700;
+  color: #4f8ef7;
+  white-space: nowrap;
+  min-width: 90px;
+  padding-top: 2px;
+}
+.sb-segment strong { display: block; font-size: .88rem; color: var(--white); margin-bottom: 2px; }
+.sb-segment span { font-size: .78rem; color: var(--muted); }
+
+.platform-note {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: rgba(255,153,51,.06);
+  border: 1px solid rgba(255,153,51,.15);
+  border-radius: 12px;
+  font-size: .83rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.platform-note strong { color: var(--white); }
+
+/* ── MILESTONES ── */
+.ngh-milestones { background: var(--navy); padding: 100px 0; }
+.milestones-list { max-width: 780px; margin: 0 auto; position: relative; }
+.milestones-list::before {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #4f8ef7, var(--saffron), #10b981);
+  opacity: .35;
+}
+.milestone-item {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 36px;
+  position: relative;
+}
+.milestone-item:last-child { margin-bottom: 0; }
+.ms-dot {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.ms-dot-blue { background: rgba(79,142,247,.15); border: 2px solid rgba(79,142,247,.4); }
+.ms-dot-orange { background: rgba(255,153,51,.15); border: 2px solid rgba(255,153,51,.4); }
+.ms-dot-purple { background: rgba(168,85,247,.15); border: 2px solid rgba(168,85,247,.4); }
+.ms-dot-green { background: rgba(16,185,129,.15); border: 2px solid rgba(16,185,129,.4); }
+.ms-dot-gold { background: rgba(212,175,55,.15); border: 2px solid rgba(212,175,55,.4); }
+.ms-dot-star { background: linear-gradient(135deg,rgba(255,153,51,.2),rgba(212,175,55,.2)); border: 2px solid rgba(212,175,55,.5); }
+
+.ms-content {
+  flex: 1;
+  padding: 18px 22px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 14px;
+  transition: border-color .2s;
+}
+.ms-content:hover { border-color: rgba(255,153,51,.2); }
+.ms-when {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 4px;
+}
+.ms-title { font-weight: 700; font-size: .95rem; color: var(--white); margin-bottom: 4px; }
+.ms-desc { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+
+/* ── PILLARS ── */
+.ngh-pillars { background: var(--navy2); padding: 100px 0; }
+.pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.pillar-card {
+  padding: 30px 24px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  transition: transform .3s, border-color .3s;
+}
+.pillar-card:hover { transform: translateY(-5px); border-color: rgba(79,142,247,.3); }
+.pillar-icon { font-size: 2rem; margin-bottom: 14px; }
+.pillar-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 8px; }
+.pillar-card p { font-size: .83rem; color: var(--muted); line-height: 1.7; }
+
+/* ── APPLY CTA ── */
+.ngh-apply {
+  padding: 120px 0;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.ngh-apply::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(79,142,247,.12) 0%, transparent 70%);
+}
+.ngh-apply-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.ngh-apply h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 18px;
+  line-height: 1.15;
+}
+.ngh-apply p { font-size: 1.05rem; color: var(--muted); margin-bottom: 40px; line-height: 1.7; }
+.ngh-apply-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.ngh-eligibility {
+  margin-top: 40px;
+  padding: 20px 28px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  font-size: .84rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.ngh-eligibility strong { color: var(--white); display: block; margin-bottom: 8px; font-size: .9rem; }
+.ngh-eligibility ul { padding-left: 18px; }
+.ngh-eligibility ul li { margin-bottom: 4px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .ngh-overview-grid { grid-template-columns: 1fr; gap: 40px; }
+  .schedule-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .ngh-stat { padding: 16px 20px; }
+  .ngh-stat-num { font-size: 1.4rem; }
+  .milestones-list::before { display: none; }
+}
+</style>
+</head>
+<body>
+
+  <!-- Sticky Social Sidebar -->
+  <div class="sticky-social-bar">
+    <a href="https://www.instagram.com/foundationtheak" target="_blank" title="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+    </a>
+    <a href="https://youtube.com/@foundationtheak" target="_blank" title="YouTube">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+    </a>
+    <a href="https://x.com/foundationtheak" target="_blank" title="X (Twitter)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+    </a>
+    <a href="https://www.linkedin.com/company/arun-kumar-foundation-akf/" target="_blank" title="LinkedIn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </a>
+    <a href="https://whatsapp.com/channel/0029VbBDiZnId7nROuNdtd3h" target="_blank" title="WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </a>
+  </div>
+
+<!-- ── NAV ── -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="WhatsApp Image 2026-04-18 at 8.07.49 PM.jpeg" alt="AKF Logo" class="logo-img">
+      <div class="logo-text">
+        <span class="logo-name">Arun-Kumar Foundation</span>
+        <span class="logo-tagline">Serving the Roots</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="ngh.html" class="nav-ngh-badge" style="color:#fff;white-space:nowrap;">NGH ✦</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html" class="nav-login-btn">Member Login</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="ngh-hero" id="home">
+  <div class="ngh-hero-bg"></div>
+  <div class="ngh-hero-content">
+    <div class="ngh-presented-by">
+      <img src="WhatsApp Image 2026-04-18 at 8.07.49 PM.jpeg" alt="AKF">
+      <span>A Flagship Programme by <strong>Arun-Kumar Foundation</strong></span>
+    </div>
+    <h1 class="ngh-title">
+      Next Gen<br><span class="ngh-grad">Hindustan</span>
+    </h1>
+    <p class="ngh-tagline">AI for Every Indian</p>
+    <p class="ngh-sub">From Zero to LLM</p>
+    <div class="ngh-stats-row">
+      <div class="ngh-stat">
+        <span class="ngh-stat-num">11+</span>
+        <span class="ngh-stat-lbl">Months of Training</span>
+      </div>
+      <div class="ngh-stat">
+        <span class="ngh-stat-num">1,000</span>
+        <span class="ngh-stat-lbl">Students per Batch</span>
+      </div>
+      <div class="ngh-stat">
+        <span class="ngh-stat-num">4</span>
+        <span class="ngh-stat-lbl">Learning Phases</span>
+      </div>
+      <div class="ngh-stat">
+        <span class="ngh-stat-num">MIT</span>
+        <span class="ngh-stat-lbl">Grade Curriculum</span>
+      </div>
+    </div>
+    <div class="ngh-cta-row">
+      <a href="contact.html" class="btn-ngh">Apply for Next Batch →</a>
+      <a href="#phases" class="btn btn-outline">Explore the Curriculum</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-dot" style="background:#4f8ef7"></div></div>
+</section>
+
+<!-- ── PROGRAMME OVERVIEW ── -->
+<section class="ngh-overview" id="overview">
+  <div class="container">
+    <div class="ngh-overview-grid">
+      <div class="ngh-overview-text" data-animate>
+        <span class="section-tag" style="border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.1);color:#4f8ef7">Our Vision</span>
+        <h2>India's Next AI Generation Starts Here</h2>
+        <div class="mission-quote">
+          "To empower every young Indian — regardless of background — with the knowledge and skills to build, train, and deploy Large Language Models, making India a global leader in Artificial Intelligence."
+          <cite>— Arun-Kumar Foundation Mission Statement</cite>
+        </div>
+        <p>Next Gen Hindustan is a flagship, social-impact AI training programme designed to take complete beginners — students who have never written a line of code — and transform them into capable AI practitioners who can independently build and train Large Language Models.</p>
+        <p>The programme blends MIT-grade curriculum depth with India-centric accessibility, delivered live online, at no barrier to entry. We don't just train — we build a generation.</p>
+      </div>
+      <div class="ngh-quick-facts" data-animate>
+        <div class="quick-fact">
+          <div class="qf-icon">🎓</div>
+          <div class="qf-text">
+            <strong>No Prerequisites Required</strong>
+            <span>Designed for complete beginners with zero coding background</span>
+          </div>
+        </div>
+        <div class="quick-fact">
+          <div class="qf-icon">💻</div>
+          <div class="qf-text">
+            <strong>Live Online Classes</strong>
+            <span>2 live sessions per week, 3 hours each — recorded within 24 hrs</span>
+          </div>
+        </div>
+        <div class="quick-fact">
+          <div class="qf-icon">📚</div>
+          <div class="qf-text">
+            <strong>MIT-Grade Curriculum</strong>
+            <span>Based on MIT 6.0001, 6.036, 6.7960</span>
+          </div>
+        </div>
+        <div class="quick-fact">
+          <div class="qf-icon">🤝</div>
+          <div class="qf-text">
+            <strong>Community Learning</strong>
+            <span>1,000 students per batch — group projects, peer reviews, Discord</span>
+          </div>
+        </div>
+        <div class="quick-fact">
+          <div class="qf-icon">📋</div>
+          <div class="qf-text">
+            <strong>Project-First Assessment</strong>
+            <span>No written exams — only real, shipped projects count</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4 PHASES ── -->
+<section class="ngh-phases" id="phases">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" style="border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.1);color:#4f8ef7">The Curriculum</span>
+      <h2>Four Phases. One Mission.</h2>
+      <p>A sequential programme where every phase builds directly on the previous one — from your first line of Python to a fully deployed LLM.</p>
+    </div>
+    <div class="phases-grid">
+
+      <!-- Phase 1 -->
+      <div class="phase-card phase-1" data-animate>
+        <div class="phase-num">Phase 01</div>
+        <div class="phase-name">Python Foundations</div>
+        <div class="phase-duration">Months 1 – 2 · 2 Months</div>
+        <div class="phase-basis">Based on <strong>MIT 6.0001</strong> — Intro to CS with Python</div>
+        <ul class="phase-topics">
+          <li>Python syntax, variables &amp; control flow</li>
+          <li>Functions, recursion &amp; modular programming</li>
+          <li>Object-oriented programming — classes &amp; inheritance</li>
+          <li>File I/O, error handling &amp; debugging</li>
+          <li>NumPy, Pandas &amp; Matplotlib</li>
+          <li>Data structures &amp; algorithm fundamentals</li>
+        </ul>
+        <div class="phase-capstone">
+          <strong>🏁 Capstone — Individual Project</strong>
+          Build a fully functional data analysis tool from scratch.
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase-card phase-2" data-animate>
+        <div class="phase-num">Phase 02</div>
+        <div class="phase-name">Machine Learning</div>
+        <div class="phase-duration">Months 3 – 7 · 5 Months</div>
+        <div class="phase-basis">Based on <strong>MIT 6.036</strong> — Intro to Machine Learning</div>
+        <ul class="phase-topics">
+          <li>Supervised learning — regression, SVM, decision trees</li>
+          <li>Model evaluation — cross-validation &amp; metrics</li>
+          <li>Unsupervised learning — k-means &amp; PCA</li>
+          <li>Feature engineering &amp; preprocessing pipelines</li>
+          <li>Ensemble methods — Random Forests &amp; XGBoost</li>
+          <li>Tools: Scikit-learn, Pandas, Seaborn</li>
+        </ul>
+        <div class="phase-capstone">
+          <strong>🏁 Capstone — Group Project (Teams of 4–5)</strong>
+          End-to-end ML pipeline on a real-world Indian dataset.
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase-card phase-3" data-animate>
+        <div class="phase-num">Phase 03</div>
+        <div class="phase-name">Deep Learning</div>
+        <div class="phase-duration">Months 8 – 9 · 2 Months</div>
+        <div class="phase-basis">Based on <strong>MIT 6.7960</strong> — Deep Learning</div>
+        <ul class="phase-topics">
+          <li>Perceptrons, activations &amp; feedforward networks</li>
+          <li>Backpropagation — Adam, SGD, RMSprop</li>
+          <li>Convolutional Neural Networks for vision</li>
+          <li>RNNs, LSTMs &amp; GRUs for sequences</li>
+          <li>Transfer learning &amp; fine-tuning pre-trained models</li>
+          <li>Tools: TensorFlow / PyTorch, Keras, Google Colab</li>
+        </ul>
+        <div class="phase-capstone">
+          <strong>🏁 Capstone — Group Demo Day</strong>
+          Train a CNN image classifier or RNN text model; live demo to the batch.
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="phase-card phase-4" data-animate>
+        <div class="phase-num">Phase 04</div>
+        <div class="phase-name">Large Language Models</div>
+        <div class="phase-duration">Months 10 – 11+ · Extensible</div>
+
+        <ul class="phase-topics">
+          <li>Attention mechanisms &amp; Transformer architecture</li>
+          <li>Pre-training — masked &amp; causal language modelling</li>
+          <li>Tokenisation — BPE, WordPiece, SentencePiece</li>
+          <li>Fine-tuning — LoRA, QLoRA, PEFT</li>
+          <li>Instruction tuning &amp; RLHF overview</li>
+          <li>Deployment — Hugging Face Hub &amp; quantisation</li>
+        </ul>
+        <div class="phase-capstone">
+          <strong>🏁 Final Capstone — Group Build</strong>
+          Build, train, and deploy a small LLM from scratch. Presented to academic &amp; industry judges.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── WEEKLY SCHEDULE ── -->
+<section class="ngh-schedule" id="schedule">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" style="border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.1);color:#4f8ef7">How It Works</span>
+      <h2>Weekly Schedule &amp; Class Format</h2>
+      <p>Structured for working students — 2 weekend classes, independent study, and project hours.</p>
+    </div>
+    <div class="schedule-layout">
+      <div data-animate>
+        <p style="color:var(--muted);font-size:.88rem;margin-bottom:18px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px">Weekly Time Commitment</p>
+        <div class="schedule-table-wrap">
+          <table class="sched-table">
+            <thead>
+              <tr><th>Activity</th><th>Description</th><th>Hours</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Live Class 1</td><td>Teaching + doubt solving</td><td>3 hrs</td></tr>
+              <tr><td>Live Class 2</td><td>Teaching + doubt solving</td><td>3 hrs</td></tr>
+              <tr><td>Independent Study</td><td>Reading, revision, exercises</td><td>~2 hrs</td></tr>
+              <tr><td>Project Work</td><td>Phase-specific contribution</td><td>Variable</td></tr>
+              <tr class="total-row"><td>Total per week</td><td></td><td>~8 hrs</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="platform-note" style="margin-top:20px">
+          <strong>📡 Delivery Platform</strong> — Live online via video conferencing. All sessions recorded and available within 24 hours. Materials managed via a centralised LMS.<br><br>
+          <strong>💬 Async Support</strong> — 24/7 Discord community forum for the entire 1,000-student cohort.
+        </div>
+      </div>
+      <div data-animate>
+        <p style="color:var(--muted);font-size:.88rem;margin-bottom:18px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px">Each 3-Hour Session Breakdown</p>
+        <div class="session-breakdown">
+          <div class="sb-header">Session Format</div>
+          <div class="sb-row">
+            <div class="sb-time">0:00 – 1:00</div>
+            <div class="sb-segment">
+              <strong>Lecture Block 1</strong>
+              <span>New concept teaching — instructor-led</span>
+            </div>
+          </div>
+          <div class="sb-row">
+            <div class="sb-time">1:00 – 2:00</div>
+            <div class="sb-segment">
+              <strong>Lecture Block 2</strong>
+              <span>Live coding demonstration — instructor-led</span>
+            </div>
+          </div>
+          <div class="sb-row">
+            <div class="sb-time">2:00 – 3:00</div>
+            <div class="sb-segment">
+              <strong>Doubt Solving &amp; Q&amp;A</strong>
+              <span>Student-led — open floor for questions</span>
+            </div>
+          </div>
+        </div>
+        <div class="platform-note" style="margin-top:20px">
+          <strong>📝 Assessment Philosophy</strong> — No written exams. Evaluation is entirely through project quality, code reviews, and peer evaluation. Students must pass each phase's project to advance. Extension to 15 months is available without academic penalty.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STUDENT MILESTONES ── -->
+<section class="ngh-milestones" id="milestones">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" style="border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.1);color:#4f8ef7">The Journey</span>
+      <h2>Your Path Through NGH</h2>
+      <p>Every student follows the same structured journey — from registration to their AKF graduation ceremony.</p>
+    </div>
+    <div class="milestones-list">
+
+      <div class="milestone-item" data-animate>
+        <div class="ms-dot ms-dot-blue">📋</div>
+        <div class="ms-content">
+          <div class="ms-when">Stage 0 — Registration</div>
+          <div class="ms-title">Application &amp; Enrolment</div>
+          <div class="ms-desc">Submit your application and complete enrolment. No technical background required.</div>
+        </div>
+      </div>
+
+      <div class="milestone-item" data-animate>
+        <div class="ms-dot ms-dot-orange">👕</div>
+        <div class="ms-content">
+          <div class="ms-when">Stage 0+ — Welcome Kit</div>
+          <div class="ms-title">Official NGH Programme Shirt</div>
+          <div class="ms-desc">Your official Next Gen Hindustan shirt is dispatched on registration. You're part of the cohort.</div>
+        </div>
+      </div>
+
+      <div class="milestone-item" data-animate>
+        <div class="ms-dot ms-dot-blue">🚀</div>
+        <div class="ms-content">
+          <div class="ms-when">Month 1 — Orientation Week</div>
+          <div class="ms-title">Programme Intro &amp; Setup</div>
+          <div class="ms-desc">Programme kickoff, tooling setup (Python, Jupyter, Git), cohort introductions, and your first live session.</div>
+        </div>
+      </div>
+
+      <div class="milestone-item" data-animate>
+        <div class="ms-dot ms-dot-blue">🐍</div>
+        <div class="ms-content">
+          <div class="ms-when">Month 2 — Phase 1 Completion</div>
+          <div class="ms-title">Python Individual Project</div>
+          <div class="ms-desc">Your standalone Python application — data tool or automation script — is submitted, graded, and reviewed by instructors.</div>
+        </div>
+      </div>
+
+      <div class="milestone-item" data-animate>
+        <div class="ms-dot ms-dot-orange">🤖</div>
+        <div class="ms-content">
+          <div class="ms-when">Month 7 — Phase 2 Completion</div>
+          <div class="ms-title">ML Group Project Presentation</div>
+          <div class="ms-desc">Your team presents a full end-to-end ML pipeline. A peer review session is conducted with the cohort.</div>
+        </div>
+      </div>
+
+      <div class="milestone-item" data-animate>
+        <div class="ms-dot ms-dot-purple">🧠</div>
+        <div class="ms-content">
+          <div class="ms-when">Month 9 — Phase 3 Completion</div>
+          <div class="ms-title">Deep Learning Demo Day</div>
+          <div class="ms-desc">Live virtual demo of your team's trained neural network to the entire batch of 1,000 students.</div>
+        </div>
+      </div>
+
+      <div class="milestone-item" data-animate>
+        <div class="ms-dot ms-dot-green">🧬</div>
+        <div class="ms-content">
+          <div class="ms-when">Month 11+ — Phase 4 Completion</div>
+          <div class="ms-title">LLM Capstone Demo</div>
+          <div class="ms-desc">Your team presents a fully functional, trained, and deployed Large Language Model to a panel of academic and industry judges.</div>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PROGRAMME PILLARS ── -->
+<section class="ngh-pillars">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" style="border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.1);color:#4f8ef7">What Sets Us Apart</span>
+      <h2>Four Pillars of NGH</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card" data-animate>
+        <div class="pillar-icon">🌍</div>
+        <h3>World-Class Curriculum</h3>
+        <p>Follows MIT OpenCourseWare syllabi for Python, ML, and Deep Learning — the same material taught at one of the world's top universities.</p>
+      </div>
+      <div class="pillar-card" data-animate>
+        <div class="pillar-icon">🛠️</div>
+        <h3>Learn by Building</h3>
+        <p>Every phase ends with a real shipped project. Students build, not just study. The only exam that matters is: does it work?</p>
+      </div>
+      <div class="pillar-card" data-animate>
+        <div class="pillar-icon">👥</div>
+        <h3>Community Learning</h3>
+        <p>1,000 students per batch. Group ML and LLM projects build collaboration skills that mirror the real AI industry.</p>
+      </div>
+      <div class="pillar-card" data-animate>
+        <div class="pillar-icon">⏳</div>
+        <h3>Structured Flexibility</h3>
+        <p>Core 11-month timeline, extensible to 15 months. No student is penalised for needing more time. No one left behind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── MENTORS ── -->
+<section class="ngh-pillars" id="mentors" style="background:#0F1C35">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" style="border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.1);color:#4f8ef7">The People Behind NGH</span>
+      <h2 style="color:#fff">Mentors &amp; Instructors</h2>
+      <p style="color:#9A8A74">The dedicated experts guiding our students through every phase — from first line of Python to deploying their first LLM.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-bottom:52px">
+
+      <!-- Mentor placeholder cards — replace with real mentors -->
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(79,142,247,.2);border-radius:16px;padding:28px 22px;text-align:center;transition:transform .3s;cursor:default" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#4f8ef7,#6c5ce7);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:2rem;border:3px solid rgba(79,142,247,.3)">👨‍💻</div>
+        <h3 style="color:#fff;font-size:1rem;font-weight:700;margin-bottom:4px">Lead Instructor</h3>
+        <span style="display:inline-block;padding:4px 12px;background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.25);color:#4f8ef7;border-radius:4px;font-size:.72rem;font-weight:600;margin-bottom:10px">Python &amp; ML</span>
+        <p style="color:#9A8A74;font-size:.83rem;line-height:1.65">Expert in Python, ML fundamentals, and pedagogy. Leads Phase 1 &amp; 2 curriculum delivery.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,153,51,.2);border-radius:16px;padding:28px 22px;text-align:center;transition:transform .3s;cursor:default" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#FF9933,#f59e0b);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:2rem;border:3px solid rgba(255,153,51,.3)">👩‍🔬</div>
+        <h3 style="color:#fff;font-size:1rem;font-weight:700;margin-bottom:4px">Deep Learning Mentor</h3>
+        <span style="display:inline-block;padding:4px 12px;background:rgba(255,153,51,.1);border:1px solid rgba(255,153,51,.25);color:#FF9933;border-radius:4px;font-size:.72rem;font-weight:600;margin-bottom:10px">Neural Networks</span>
+        <p style="color:#9A8A74;font-size:.83rem;line-height:1.65">Specialist in CNNs, RNNs, and transfer learning. Guides students through Phase 3 deep learning projects.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(168,85,247,.2);border-radius:16px;padding:28px 22px;text-align:center;transition:transform .3s;cursor:default" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#ec4899);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:2rem;border:3px solid rgba(168,85,247,.3)">🧑‍🏫</div>
+        <h3 style="color:#fff;font-size:1rem;font-weight:700;margin-bottom:4px">LLM &amp; NLP Expert</h3>
+        <span style="display:inline-block;padding:4px 12px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.25);color:#c084fc;border-radius:4px;font-size:.72rem;font-weight:600;margin-bottom:10px">Transformers &amp; LLMs</span>
+        <p style="color:#9A8A74;font-size:.83rem;line-height:1.65">Leads Phase 4 — from Transformer architecture to fine-tuning and deploying production LLMs.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(16,185,129,.2);border-radius:16px;padding:28px 22px;text-align:center;transition:transform .3s;cursor:default" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#10b981,#4f8ef7);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:2rem;border:3px solid rgba(16,185,129,.3)">👨‍🎓</div>
+        <h3 style="color:#fff;font-size:1rem;font-weight:700;margin-bottom:4px">Programme Coordinator</h3>
+        <span style="display:inline-block;padding:4px 12px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#34d399;border-radius:4px;font-size:.72rem;font-weight:600;margin-bottom:10px">Student Support</span>
+        <p style="color:#9A8A74;font-size:.83rem;line-height:1.65">Oversees cohort progress, peer mentoring, and student success throughout the full 11-month programme.</p>
+      </div>
+
+    </div>
+
+    <!-- Mentor CTA -->
+    <div style="background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.2);border-radius:14px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div>
+        <div style="font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4f8ef7;margin-bottom:8px">Want to mentor?</div>
+        <h3 style="color:#fff;font-size:1.2rem;font-weight:800;margin-bottom:6px">Join NGH as a Mentor or Guest Lecturer</h3>
+        <p style="color:#9A8A74;font-size:.88rem">We welcome AI practitioners, researchers, and educators to contribute to India's AI generation.</p>
+      </div>
+      <a href="mailto:foundationtheak@gmail.com?subject=NGH Mentor Interest" style="display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,#4f8ef7,#6c5ce7);color:#fff;font-weight:700;font-size:.9rem;text-decoration:none;border-radius:8px;white-space:nowrap;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Express Interest →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── APPLY CTA ── -->
+<section class="ngh-apply" id="apply">
+  <div class="ngh-apply-content">
+    <span class="section-tag" style="border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.1);color:#4f8ef7;margin-bottom:24px;display:inline-block">Join the Movement</span>
+    <h2>Ready to Build India's AI Future?</h2>
+    <p>Applications for the next batch of Next Gen Hindustan are open. No coding background required — just passion, commitment, and 8 hours a week.</p>
+    <div class="ngh-apply-btns">
+      <a href="contact.html" class="btn-ngh">Apply for Next Batch →</a>
+      <a href="programs.html" class="btn btn-outline">See All AKF Programs</a>
+    </div>
+    <div class="ngh-eligibility">
+      <strong>Who Should Apply?</strong>
+      <ul>
+        <li>Motivated young Indians with no prior programming experience</li>
+        <li>Students passionate about technology and India's AI future</li>
+        <li>Anyone who can commit 5–7 hours per week</li>
+        <li>Those who want a globally competitive AI skillset</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="text-decoration:none">
+          <img src="WhatsApp Image 2026-04-18 at 8.07.49 PM.jpeg" alt="AKF Logo" class="logo-img">
+          <div class="logo-text">
+            <span class="logo-name">Arun-Kumar Foundation</span>
+            <span class="logo-tagline">Serving the Roots</span>
+          </div>
+        </a>
+        <p>Building hope and changing lives through sustainable community development programs across India since 2023.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/foundationtheak" target="_blank" class="social-pill">📸</a>
+          <a href="https://youtube.com/@foundationtheak" target="_blank" class="social-pill">▶</a>
+          <a href="https://x.com/foundationtheak" target="_blank" class="social-pill">𝕏</a>
+          <a href="https://www.linkedin.com/company/arun-kumar-foundation-akf/" target="_blank" class="social-pill">in</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="ngh.html">Next Gen Hindustan</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Member Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>NGH Programme</h4>
+        <ul>
+          <li><a href="ngh.html#overview">Programme Overview</a></li>
+          <li><a href="ngh.html#phases">Curriculum &amp; Phases</a></li>
+          <li><a href="ngh.html#schedule">Schedule &amp; Format</a></li>
+          <li><a href="ngh.html#milestones">Student Journey</a></li>
+          <li><a href="ngh.html#apply">Apply Now</a></li>
+          <li><a href="mailto:foundationtheak@gmail.com">NGH Enquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Arun-Kumar Foundation (AKF). All rights reserved.</p>
+      <p>Proudly created by <a href="https://www.linkedin.com/in/punit-lohan-8513b5222/" target="_blank" style="color:var(--teal); text-decoration:none;">Punit Lohan</a></p>
+      <p class="footer-reg">Regd. ID U88900HR2023NPL112840 &bull; Section 8 &bull; MCA &bull; NITI Aayog</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

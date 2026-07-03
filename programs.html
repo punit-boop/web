@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs — Arun-Kumar Foundation</title>
+  <meta name="description" content="AKF programs: Social Internship, Internships & Jobs, Education to All, Healthcare Sector.">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Page Hero Styles */
+    .page-hero {
+      padding: 160px 0 80px;
+      text-align: center;
+      background: linear-gradient(135deg, #1A2E4A 0%, #2D5A3D 60%, #1A2E4A 100%);
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .page-hero p {
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+    
+    /* Program Section Styles */
+    .prog-section {
+      padding: 80px 0;
+    }
+    .prog-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 80px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid rgba(249, 243, 232, .06);
+    }
+    .prog-feature:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .prog-feature.reverse .prog-text {
+      order: 2;
+    }
+    .prog-feature.reverse .prog-visual {
+      order: 1;
+    }
+    
+    /* Visual Representation Block */
+    .prog-visual {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+      transition: border-color .3s;
+    }
+    .prog-visual:hover {
+      border-color: rgba(255, 154, 0, .25);
+    }
+    .prog-visual .big-icon {
+      font-size: 5rem;
+      margin-bottom: 20px;
+    }
+    .prog-visual h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .prog-visual .sub {
+      color: #FF9A00;
+      font-size: .82rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    
+    /* Text Descriptions Block */
+    .prog-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--black);
+    }
+    .prog-text h3 span {
+      color: #FF9A00;
+    }
+    .prog-text p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 20px;
+      font-size: .93rem;
+    }
+    
+    /* Program Feature List */
+    .feature-list {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .feature-list li {
+      color: var(--muted);
+      font-size: .88rem;
+      padding: 9px 0 9px 22px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #FF9A00;
+      font-weight: 700;
+    }
+    
+    /* Responsive Queries */
+    @media (max-width: 768px) {
+      .prog-feature, .prog-feature.reverse {
+        grid-template-columns: 1fr;
+      }
+      .prog-feature.reverse .prog-text {
+        order: 0;
+      }
+      .prog-feature.reverse .prog-visual {
+        order: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Social Sidebar -->
+  <div class="sticky-social-bar">
+    <a href="https://www.instagram.com/foundationtheak" target="_blank" title="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+    </a>
+    <a href="https://youtube.com/@foundationtheak" target="_blank" title="YouTube">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+    </a>
+    <a href="https://x.com/foundationtheak" target="_blank" title="X (Twitter)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+    </a>
+    <a href="https://www.linkedin.com/company/arun-kumar-foundation-akf/" target="_blank" title="LinkedIn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </a>
+    <a href="https://whatsapp.com/channel/0029VbBDiZnId7nROuNdtd3h" target="_blank" title="WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </a>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img src="WhatsApp Image 2026-04-18 at 8.07.49 PM.jpeg" alt="AKF Logo" class="logo-img">
+        <div class="logo-text">
+          <span class="logo-name">Arun-Kumar Foundation</span>
+          <span class="logo-tagline">Serving the Roots</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html" style="color:var(--teal)">Programs</a></li>
+        <li>
+          <a href="ngh.html" style="background:linear-gradient(135deg,#4f8ef7,#6c5ce7);color:#fff;padding:7px 16px;border-radius:50px;font-weight:700;white-space:nowrap;">NGH ✦</a>
+        </li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html" class="nav-login-btn">Member Login</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag">What We Do</span>
+      <h1>Our Programs</h1>
+      <p>Four pillars of change — each designed to create lasting impact in education, employment, and health.</p>
+    </div>
+  </section>
+
+  <!-- Programs Content Container -->
+  <div class="container prog-section">
+
+    <!-- NGH Flagship Block -->
+    <div style="background:linear-gradient(135deg,rgba(79,142,247,.1),rgba(108,92,231,.08));border:1px solid rgba(79,142,247,.3);border-radius:20px;padding:52px 44px;margin-bottom:80px;position:relative;overflow:hidden" data-animate>
+      <!-- Background Decorations -->
+      <div style="position:absolute;top:-40px;right:-40px;width:280px;height:280px;background:radial-gradient(circle,rgba(79,142,247,.1),transparent);border-radius:50%"></div>
+      <div style="position:absolute;bottom:-20px;left:-20px;width:160px;height:160px;background:radial-gradient(circle,rgba(255,153,51,.06),transparent);border-radius:50%"></div>
+      
+      <!-- Flagship Info Grid -->
+      <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center">
+        <div>
+          <div style="display:inline-block;padding:5px 16px;background:rgba(79,142,247,.15);border:1px solid rgba(79,142,247,.3);border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4f8ef7;margin-bottom:16px">🌟 Flagship AI Programme · 2026</div>
+          <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--text);margin-bottom:12px;line-height:1.15">Next Gen Hindustan</h2>
+          <p style="color:#8a9bbf;font-size:.94rem;line-height:1.8;max-width:600px;margin-bottom:0">Our most ambitious programme — taking 1,000 young Indians with zero coding background through 11 months of MIT-grade AI training, ending with a fully deployed Large Language Model.</p>
+          
+          <!-- Key Statistics -->
+          <div style="display:flex;gap:28px;margin-top:20px;flex-wrap:wrap">
+            <div>
+              <span style="display:block;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#4f8ef7">11+</span>
+              <span style="font-size:.72rem;color:#8a9bbf;text-transform:uppercase;letter-spacing:1px">Months</span>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,.08)"></div>
+            <div>
+              <span style="display:block;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#FF9933">1,000</span>
+              <span style="font-size:.72rem;color:#8a9bbf;text-transform:uppercase;letter-spacing:1px">Students / Batch</span>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,.08)"></div>
+            <div>
+              <span style="display:block;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#c084fc">4</span>
+              <span style="font-size:.72rem;color:#8a9bbf;text-transform:uppercase;letter-spacing:1px">Phases</span>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,.08)"></div>
+            <div>
+              <span style="display:block;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#34d399">MIT</span>
+              <span style="font-size:.72rem;color:#8a9bbf;text-transform:uppercase;letter-spacing:1px">Curriculum Basis</span>
+            </div>
+          </div>
+        </div>
+        <!-- Action Button -->
+        <a href="ngh.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:linear-gradient(135deg,#4f8ef7,#6c5ce7);color:#fff;border-radius:50px;font-weight:700;font-size:.95rem;text-decoration:none;white-space:nowrap;box-shadow:0 4px 28px rgba(79,142,247,.4);flex-shrink:0">Full Programme →</a>
+      </div>
+    </div>
+
+    <!-- Social Internship Section -->
+    <div class="prog-feature" data-animate>
+      <div class="prog-visual">
+        <div class="big-icon">🎓</div>
+        <h2>Social Internship</h2>
+        <div class="sub">Open for All Students</div>
+      </div>
+      <div class="prog-text">
+        <h3>Serve Society, Grow as a Changemaker</h3>
+        <p>Our Social Internship program gives students a chance to step beyond classrooms and serve real communities. It is fully remote, meaningful, and recognized for school and college submissions.</p>
+        <ul class="feature-list">
+          <li>Fully Remote — work from anywhere in India</li>
+          <li>Valid for school & college portfolio submissions</li>
+          <li>Certificate from AKF on completion</li>
+          <li>Real community projects, not busywork</li>
+          <li>Mentorship from AKF leadership</li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJS1zNIa595laraEC9xQ2HAqUWR-LGnu3B1Esk04SaXWZsOA/viewform" class="btn btn-primary" target="_blank">Apply Now →</a>
+      </div>
+    </div>
+
+    <!-- Internships & Jobs Section (Reversed Layout) -->
+    <div class="prog-feature reverse" data-animate>
+      <div class="prog-text">
+        <h3>Career Opportunities for Youth</h3>
+        <p>AKF's Internships & Jobs initiative connects ambitious youth with career-building placements in corporate and private companies. We bridge the gap between talent and opportunity.</p>
+        <ul class="feature-list">
+          <li>Remote and On-Site placements available</li>
+          <li>Open to students and professionals</li>
+          <li>Corporate, private, and NGO sectors</li>
+          <li>Skill matching and placement support</li>
+          <li>Ongoing mentorship post-placement</li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScESDY0VqusAuBcgv8ATRYkBqw8WE0lwUwqTavPbeBpP7fZZg/viewform" class="btn btn-primary" target="_blank">Apply Now →</a>
+      </div>
+      <div class="prog-visual">
+        <div class="big-icon">💼</div>
+        <h2>Internships & Jobs</h2>
+        <div class="sub">Students & Professionals</div>
+      </div>
+    </div>
+
+    <!-- Education to All Section -->
+    <div class="prog-feature" data-animate>
+      <div class="prog-visual">
+        <div class="big-icon">📚</div>
+        <h2>Education to All</h2>
+        <div class="sub">For Every Child, Everywhere</div>
+      </div>
+      <div class="prog-text">
+        <h3>Quality Education Knows No Boundary</h3>
+        <p>We believe every child deserves quality education regardless of where they are born. Our Education to All program brings sustainable, skills-based learning to underserved communities.</p>
+        <ul class="feature-list">
+          <li>Coding, Graphic Design & Structural Studies</li>
+          <li>Slum & rural area outreach (Shiksha Samarth)</li>
+          <li>Educational kit distribution</li>
+          <li>Multiple learning tracks for different needs</li>
+          <li>Students only — focused on youth development</li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKHb1gQpQ9G1-UizttnuQWCa3YnnpZ_87Grk6cy_KHMLV4TA/viewform" class="btn btn-primary" target="_blank">Apply Now →</a>
+      </div>
+    </div>
+
+    <!-- Healthcare Sector Section (Reversed Layout) -->
+    <div class="prog-feature reverse" data-animate>
+      <div class="prog-text">
+        <h3>Healthcare Accessible to All</h3>
+        <p>Good health is a right, not a privilege. AKF's Healthcare sector runs camps, awareness drives, and support services to bring basic healthcare to underserved communities.</p>
+        <ul class="feature-list">
+          <li>Minor health check-up camps in rural areas</li>
+          <li>Cancer awareness drives & early detection</li>
+          <li>Fit India Movement — obesity & wellness</li>
+          <li>Community health education programs</li>
+          <li>Partnerships with medical professionals</li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfkI6JcrXcaOw6uQcw2Lz4mtXgSpU5lHauRtNaVKUIMur8fw/viewform" class="btn btn-primary" target="_blank">Participate →</a>
+      </div>
+      <div class="prog-visual">
+        <div class="big-icon">🏥</div>
+        <h2>Healthcare Sector</h2>
+        <div class="sub">Camps · Awareness · Support</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer Area -->
+  <footer style="background:#080603; padding:40px 0 24px; border-top:1px solid rgba(255,255,255,.08)">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px">
+      <div style="display:flex; flex-direction:column; gap:4px">
+        <p style="color:var(--muted); font-size:.8rem">&copy; 2025 Arun-Kumar Foundation. All rights reserved.</p>
+        <p style="color:var(--muted); font-size:.8rem">Proudly created by <a href="https://www.linkedin.com/in/punit-lohan-8513b5222/" target="_blank" style="color:var(--teal); text-decoration:none;">Punit Lohan</a></p>
+      </div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap">
+        <a href="/" style="color:var(--muted); font-size:.82rem; text-decoration:none">Home</a>
+        <a href="/about" style="color:var(--muted); font-size:.82rem; text-decoration:none">About</a>
+        <a href="/contact" style="color:var(--muted); font-size:.82rem; text-decoration:none">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
